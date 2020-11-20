@@ -16,7 +16,7 @@
         "ext-dom": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^6.2.1",
+        "guzzlehttp/guzzle": "^7.0.1",
         "psr/log": "^1.0"
     },
     "require-dev": {
