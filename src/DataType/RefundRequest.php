@@ -13,6 +13,16 @@ class RefundRequest extends RequestBase
     public $transactionId = '';
 
     /**
+     * @var string
+     */
+    public $orderRef = '';
+
+    /**
+     * @var string
+     */
+    public $currency = '';
+
+    /**
      * @var float
      */
     public $refundTotal = 0.0;

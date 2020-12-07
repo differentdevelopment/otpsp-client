@@ -52,6 +52,16 @@ class PaymentRequest extends RequestBase
     /**
      * @var string
      */
+    public $orderRef = '';
+
+    /**
+     * @var string
+     */
+    public $currency = '';
+
+    /**
+     * @var string
+     */
     public $customer = '';
 
     /**

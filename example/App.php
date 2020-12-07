@@ -25,7 +25,7 @@ class App
 
     public function getBaseUrl(): string
     {
-        return getenv('OTPSP_BASE_URL') ?: 'http://127.0.0.1:1234';
+        return getenv('OTPSP_BASE_URL') ?: 'http://otpsp-client.test';
     }
 
     public function twig()

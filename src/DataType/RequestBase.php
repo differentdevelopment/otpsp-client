@@ -31,20 +31,11 @@ abstract class RequestBase implements JsonSerializable
     /**
      * @var string
      */
-    public $orderRef = '';
-
-    /**
-     * @var string
-     */
     public $salt = '';
 
     /**
      * @var string
      */
-    public $currency = '';
-
-    /**
-     * @var string
-     */
-    public $sdkVersion = 'SimplePay_PHP_SDK_2.0_180930:33ccd5ed8e8a965d18abfae333404184';
+    public $sdkVersion = 'SimplePayV2.1_Payment_PHP_SDK_2.0.7_190701:dd236896400d7463677a82a47f53e36e';
+//    public $sdkVersion = 'SimplePay_PHP_SDK_2.0_180930:33ccd5ed8e8a965d18abfae333404184';
 }

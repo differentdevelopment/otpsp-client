@@ -7,6 +7,8 @@ namespace Cheppers\OtpspClient;
 use Cheppers\OtpspClient\DataType\BackResponse;
 use Cheppers\OtpspClient\DataType\InstantPaymentNotification;
 use Cheppers\OtpspClient\DataType\PaymentRequest;
+use Cheppers\OtpspClient\DataType\QueryRequest;
+use Cheppers\OtpspClient\DataType\QueryResponse;
 use Cheppers\OtpspClient\DataType\RefundRequest;
 use Cheppers\OtpspClient\DataType\RefundResponse;
 use Cheppers\OtpspClient\DataType\RequestBase;
@@ -15,6 +17,7 @@ use DateTime;
 use DateTimeInterface;
 use Exception;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\MessageInterface;
@@ -180,7 +183,7 @@ class OtpSimplePayClient implements OtpSimplePayClientInterface, LoggerAwareInte
     }
 
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      * @throws Exception
      */
     public function startPayment(PaymentRequest $paymentRequest): PaymentResponse
@@ -192,7 +195,7 @@ class OtpSimplePayClient implements OtpSimplePayClientInterface, LoggerAwareInte
     }
 
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      * @throws Exception
      */
     public function startRefund(RefundRequest $refundRequest): RefundResponse
@@ -201,6 +204,19 @@ class OtpSimplePayClient implements OtpSimplePayClientInterface, LoggerAwareInte
         $body = $this->getMessageBody($response);
 
         return RefundResponse::__set_state($body);
+    }
+
+    /**
+     * @param  QueryRequest  $queryRequest
+     * @return QueryResponse
+     * @throws GuzzleException
+     */
+    public function startQuery(QueryRequest $queryRequest): QueryResponse
+    {
+        $response = $this->sendRequest($queryRequest, 'query');
+        $body = $this->getMessageBody($response);
+
+        return QueryResponse::__set_state($body);
     }
 
     /**
@@ -286,7 +302,7 @@ class OtpSimplePayClient implements OtpSimplePayClientInterface, LoggerAwareInte
     }
 
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function sendRequest(RequestBase $requestType, string $path): ResponseInterface
     {

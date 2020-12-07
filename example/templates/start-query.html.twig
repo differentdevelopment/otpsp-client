@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://sandbox.simplepay.hu/pay/support/favicon.ico">
+    <title>Start query response</title>
+</head>
+<body>
+<main>
+    <h1>Start payment response</h1>
+    <section>
+        <h2>queryRequestJson</h2>
+        <pre><code>{{ queryRequestJson }}</code></pre>
+    </section>
+    <section>
+        <h2>startQueryResponseJson</h2>
+        <pre><code>{{ startQueryResponseJson }}</code></pre>
+    </section>
+    <section>
+        <h2>logEntriesJson</h2>
+        <pre><code>{{ logEntriesJson }}</code></pre>
+    </section>
+{#    {% if startQueryResponse.paymentUrl -%}#}
+{#        <section>#}
+{#            <h2>paymentURL</h2>#}
+{#            <a href="{{ startQueryResponse.paymentUrl }}">Go to SimplePay</a>#}
+{#        </section>#}
+{#    {%- endif %}#}
+</main>
+{% include 'footer.html.twig' %}
+</body>
+</html>
