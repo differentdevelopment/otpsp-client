@@ -12,22 +12,12 @@ class InstantPaymentNotification extends ResponseBase implements JsonSerializabl
     /**
      * @var string
      */
-    public $cardMask = '';
-
-    /**
-     * @var string
-     */
     public $method = 'CARD';
 
     /**
      * @var string
      */
     public $finishDate = '';
-
-    /**
-     * @var string
-     */
-    public $expiry = '';
 
     /**
      * @var string
@@ -57,10 +47,8 @@ class InstantPaymentNotification extends ResponseBase implements JsonSerializabl
                 case 'merchant':
                 case 'orderRef':
                 case 'transactionId':
-                case 'cardMask':
                 case 'method':
                 case 'finishDate':
-                case 'expiry':
                 case 'paymentDate':
                 case 'status':
                 case 'receiveDate':
