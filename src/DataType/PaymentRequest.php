@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Cheppers\OtpspClient\DataType;
 
@@ -128,6 +128,8 @@ class PaymentRequest extends RequestBase
      */
     public $urls;
 
+    public $mobilApp = [];
+
     public function __construct()
     {
         $this->invoice = new Address();
@@ -164,7 +166,8 @@ class PaymentRequest extends RequestBase
                     $data[$key] = $this->invoice->exportData();
                     break;
                 case 'delivery':
-                    if ($this->delivery->zip === ''
+                    if (
+                        $this->delivery->zip === ''
                         || $this->delivery->address === ''
                         || $this->delivery->city === ''
                     ) {
@@ -177,8 +180,14 @@ class PaymentRequest extends RequestBase
                         $data[$key][] = $item->exportData();
                     }
                     break;
+                case 'mobilApp':
+                    foreach ($this->mobilApp as $item_key => $item_value) {
+                        $data[$key][$item_key] = $item_value;
+                    }
+                    break;
                 case 'urls':
-                    if ($this->urls->success === ''
+                    if (
+                        $this->urls->success === ''
                         && $this->urls->cancel === ''
                         && $this->urls->fail === ''
                         && $this->urls->timeout === ''
